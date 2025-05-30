@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Expose 3000 if you want direct access, though Nginx will be the primary entry point
+    container_name: yuriodev_frontend
+    restart: unless-stopped
+    networks:
+      - yuriodev_network
+    environment:
+      # For Next.js, ensure environment variables are prefixed with NEXT_PUBLIC_ if needed client-side
+      # Example: NEXT_PUBLIC_API_URL=/api
+      # For server-side only, you can use them directly.
+      - NODE_ENV=development # or production when building for prod
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000" # Expose 8000 for direct access/debugging, Nginx will proxy
+    container_name: yuriodev_backend
+    restart: unless-stopped
+    networks:
+      - yuriodev_network
+    environment:
+      # Environment variables for FastAPI application
+      # Example: DATABASE_URL=postgresql://user:password@db:5432/mydatabase
+      # For now, using dummy values or relying on defaults in the app
+      - APP_ENV=development
+    # volumes: # Example for local development to sync code
+    #   - ./backend:/app # Be cautious with this in Dockerfile stages that build/install
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80" # Main entry point for the application
+    container_name: yuriodev_nginx
+    restart: unless-stopped
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - yuriodev_network
+
+networks:
+  yuriodev_network:
+    driver: bridge

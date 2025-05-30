@@ -1,0 +1,38 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4f4f4; /* Light gray background for the page */
+}
+
+.mainContent {
+  flex: 1; /* Ensures the main content takes up available space, pushing footer down */
+  padding: 1.5rem; /* Default padding for content area */
+  max-width: 1200px; /* Max width for content, centered */
+  margin: 0 auto; /* Center content */
+  width: 100%;
+}
+
+.footer {
+  background-color: #2c3e50; /* Darker footer */
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  /* position: sticky; */ /* If you want a sticky footer, more styling might be needed */
+  /* bottom: 0; */
+  /* width: 100%; */
+}
+
+/* Responsive adjustments for main content padding */
+@media (max-width: 768px) {
+  .mainContent {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContent {
+    padding: 0.75rem;
+  }
+}

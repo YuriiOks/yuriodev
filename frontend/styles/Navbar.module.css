@@ -1,0 +1,61 @@
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navLinks li a:hover,
+.navLinks li a.active { /* Assuming some active link styling might be added later via JS or router props */
+  color: #0070f3; /* Next.js blue, or any other highlight color */
+}
+
+/* Basic responsiveness for Navbar */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navLinks {
+    margin-top: 1rem;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .navLinks li {
+    width: 100%;
+    text-align: left;
+  }
+
+  .navLinks li a {
+    display: block;
+    padding: 0.5rem 0;
+  }
+}

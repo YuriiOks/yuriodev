@@ -1,0 +1,90 @@
+.container {
+  padding: 2rem 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.skillCategory {
+  /* Styles for individual skill category cards are mostly covered by the global .card style */
+  /* Add specific overrides or additions if needed */
+  border-left: 4px solid #0070f3; /* Accent color for category cards */
+}
+
+.skillCategory h3 {
+  /* The global .card h3 style is already applied */
+  margin-bottom: 1rem; /* More space below category title */
+  font-size: 1.4rem;
+}
+
+.skillList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skillItem {
+  background-color: #f0f0f0; /* Light background for individual skill items */
+  color: #333;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.skillItem:hover {
+  background-color: #0070f3;
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  .header p {
+    font-size: 1.1rem;
+  }
+  .skillsGrid {
+    grid-template-columns: 1fr; /* Stack cards on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0;
+  }
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  .header p {
+    font-size: 1rem;
+  }
+  .skillCategory h3 {
+    font-size: 1.2rem;
+  }
+  .skillItem {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+  }
+}

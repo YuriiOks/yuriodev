@@ -1,0 +1,112 @@
+.container {
+  padding: 2rem 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.projectCard {
+  /* Base styles from global .card are applied */
+  display: flex;
+  flex-direction: column; /* Ensure content within card flows vertically */
+  justify-content: space-between; /* Pushes links to the bottom if card heights vary */
+}
+
+.projectCard h3 {
+  /* Global .card h3 styles are applied */
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.projectDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+  margin-bottom: 1rem;
+  flex-grow: 1; /* Allows description to take available space */
+}
+
+.projectTags {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.projectLinks {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap; /* Allow buttons to wrap if space is tight */
+  margin-top: auto; /* Pushes links to the bottom of the card */
+}
+
+/* Ensure global .button styles are applied to links if not using <button> element */
+/* The .button and .button-secondary classes are defined in globals.css */
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  .header p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0;
+  }
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  .header p {
+    font-size: 1rem;
+  }
+  .projectsGrid {
+    grid-template-columns: 1fr; /* Stack project cards */
+  }
+  .projectCard h3 {
+    font-size: 1.3rem;
+  }
+  .projectDescription {
+    font-size: 0.95rem;
+  }
+  .projectLinks {
+    flex-direction: column; /* Stack buttons in project links */
+  }
+  .projectLinks a.button {
+    width: 100%; /* Make buttons full width when stacked */
+    text-align: center;
+  }
+}

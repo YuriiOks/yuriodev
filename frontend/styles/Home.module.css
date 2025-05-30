@@ -1,0 +1,133 @@
+.container {
+  padding: 2rem 0; /* Padding for the overall page content */
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: #ffffff; /* White background for header section */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: #555;
+  font-weight: 300;
+}
+
+.bioSection {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.bioSection h2 {
+  color: #0070f3; /* Primary color for section titles */
+  border-bottom: 2px solid #0070f3;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.bioSection p {
+  line-height: 1.7;
+  color: #4a4a4a;
+  margin-bottom: 1rem;
+}
+
+.profileImageContainer { /* Optional: if you add an image */
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.profileImage {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 3px solid #0070f3;
+}
+
+.ctaSection {
+  text-align: center;
+  padding: 2rem;
+  background-color: #e9ecef; /* Light grey background for CTA */
+  border-radius: 8px;
+}
+
+.ctaSection h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.ctaSection p {
+  color: #555;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+/* Ensure global button styles are applied if not using <button> element directly */
+/* Link specific styling for buttons is in globals.css under .button */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2.2rem;
+  }
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  .ctaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ctaButtons a.button { /* Ensure buttons take full width in column layout */
+    width: 80%;
+    max-width: 300px; /* Max width for stacked buttons */
+  }
+}
+
+.waitlistSection { /* Styles for the section containing the waitlist form */
+  padding: 1rem 0; /* Add some vertical padding */
+  /* background-color: #f8f9fa; /* Optional: slightly different background for this section */
+  /* margin-bottom: 2rem; /* Ensure space before the next section */
+}
+
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0;
+  }
+  .header {
+    padding: 1.5rem;
+  }
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .bioSection, .ctaSection {
+    padding: 1rem;
+  }
+  .waitlistSection {
+    padding: 0.5rem 0;
+  }
+}

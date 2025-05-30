@@ -1,0 +1,122 @@
+/* Basic Reset */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+  color: #333; /* Default text color */
+  background-color: #f4f4f4; /* Default page background, can be overridden by Layout */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #0070f3; /* Next.js blue, good default for links */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #1a202c; /* Darker color for headings */
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+/* Paragraphs */
+p {
+  margin-bottom: 1rem;
+}
+
+/* Utility classes (optional, but can be handy) */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem; /* Padding for content within the container */
+}
+
+.text-center {
+  text-align: center;
+}
+
+.sr-only { /* For screen readers only */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Card style for projects or skills items */
+.card {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #0070f3;
+}
+
+/* Button style */
+.button {
+  display: inline-block;
+  background-color: #0070f3;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #005bb5;
+  text-decoration: none;
+}
+
+.button-secondary {
+  background-color: #6c757d;
+}
+
+.button-secondary:hover {
+  background-color: #545b62;
+}

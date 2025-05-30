@@ -1,0 +1,101 @@
+.waitlistFormContainer {
+  background-color: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem; /* Space from content above it */
+  margin-bottom: 2rem; /* Space from content below it */
+  text-align: center;
+  max-width: 600px; /* Max width for the form container */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.waitlistFormContainer h3 {
+  color: #0070f3; /* Primary color */
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.waitlistFormContainer p {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.form {
+  display: flex;
+  flex-direction: column; /* Stack input and button vertically on small screens */
+  gap: 0.75rem;
+}
+
+.input {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.input:focus {
+  border-color: #0070f3;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.2);
+}
+
+/* Using global .button and modifying it slightly or just using it as is */
+.button {
+  /* Global .button styles from globals.css will apply */
+  padding: 0.8rem 1.5rem; /* Adjust padding if needed */
+  font-size: 1.05rem;
+  width: 100%; /* Make button full width by default in this form */
+}
+
+.button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.successMessage {
+  margin-top: 1rem;
+  color: #28a745; /* Green for success */
+  font-weight: 500;
+}
+
+.errorMessage {
+  margin-top: 1rem;
+  color: #dc3545; /* Red for errors */
+  font-weight: 500;
+}
+
+/* Responsive adjustments for wider screens */
+@media (min-width: 500px) { /* Adjust breakpoint as needed */
+  .form {
+    flex-direction: row; /* Input and button side-by-side */
+    align-items: stretch; /* Make items same height */
+  }
+
+  .input {
+    flex-grow: 1; /* Input takes available space */
+    width: auto; /* Override 100% width */
+  }
+
+  .button {
+    width: auto; /* Button takes its content width */
+    flex-shrink: 0; /* Prevent button from shrinking */
+  }
+}
+
+@media (max-width: 480px) {
+  .waitlistFormContainer {
+    padding: 1.5rem;
+  }
+  .waitlistFormContainer h3 {
+    font-size: 1.6rem;
+  }
+  .waitlistFormContainer p {
+    font-size: 0.95rem;
+  }
+}
