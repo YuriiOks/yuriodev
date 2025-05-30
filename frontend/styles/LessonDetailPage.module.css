@@ -1,0 +1,103 @@
+.pageContainer {
+  max-width: 900px; /* Or your preferred content width */
+  margin: 0 auto;
+  padding: 2rem 1rem; /* Add some padding */
+}
+
+.breadcrumbNav {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.breadcrumbNav a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.breadcrumbNav a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbNav span {
+  margin: 0 0.5em;
+  color: #777;
+}
+
+.lessonMainContent {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+.lessonTitle {
+  font-size: 2.2rem;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.75rem;
+}
+
+.lessonNavigation {
+  display: flex;
+  justify-content: space-between; /* For Prev/Next buttons */
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+/* If only "Back to Course" button is present for now */
+.lessonNavigation {
+  justify-content: center;
+}
+
+.backButton {
+  /* Uses global .button style, can add specific overrides */
+  background-color: #6c757d; /* Secondary button color */
+}
+.backButton:hover {
+  background-color: #5a6268;
+}
+
+
+.errorState {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.2rem;
+  color: #dc3545; /* Red for errors */
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .lessonMainContent {
+    padding: 1.5rem;
+  }
+  .lessonTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageContainer {
+    padding: 1rem 0.5rem;
+  }
+  .lessonMainContent {
+    padding: 1rem;
+    border-radius: 0;
+  }
+  .lessonTitle {
+    font-size: 1.8rem;
+  }
+  .breadcrumbNav {
+    font-size: 0.85rem;
+    padding: 0 0.5rem; /* Add padding if main container padding is removed */
+  }
+}

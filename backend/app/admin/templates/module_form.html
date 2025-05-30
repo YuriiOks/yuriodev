@@ -1,0 +1,35 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+<h2>{{ "Edit Module: " + module.title if module else "Create New Module for Course: " + course.title }}</h2>
+
+{% if error %}
+    <div class="error">{{ error }}</div>
+{% endif %}
+
+{# The form should POST to a handler for module creation/editing #}
+{# For MVP, let's assume a POST handler like `handle_create_module_admin(course_id=course.id)` exists #}
+{# Action URL needs to be defined in admin_router.py for POST #}
+<form method="post" action="{{ url_for('admin_dashboard') }}"> {# Placeholder action, replace with actual POST endpoint #}
+    {# If editing: <form method="post" action="{{ url_for('handle_edit_module_admin', module_id=module.id) }}"> #}
+    {# If creating: <form method="post" action="{{ url_for('handle_create_module_admin', course_id=course.id) }}"> #}
+
+
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" value="{{ module.title if module else '' }}" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description (Optional)</label>
+        <textarea id="description" name="description" rows="3">{{ module.description if module else '' }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="order">Order</label>
+        <input type="number" id="order" name="order" value="{{ module.order if module else 0 }}" required>
+        <small>Numerical order within the course (e.g., 1, 2, 3...).</small>
+    </div>
+
+    <button type="submit" class="button">{{ "Update Module" if module else "Create Module" }}</button>
+    <a href="{{ url_for('view_course_detail_admin', course_id=course.id if course else module.course_id) }}" class="button button-secondary">Cancel</a>
+</form>
+{% endblock %}

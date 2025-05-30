@@ -25,7 +25,7 @@ export default function Blog() {
         <p>
           In the meantime, you can connect with me on other platforms or check out my projects.
         </p>
-        {/* 
+        {/*
           Placeholder for linking to an external blog if decided later:
           <div className={styles.externalBlogLink}>
             <p>You can also find my articles on Medium:</p>

@@ -1,46 +1,77 @@
 version: '3.8'
 
 services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: yuriodev_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-yuriodev}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-yuriodevpass}
+      POSTGRES_DB: ${POSTGRES_DB:-yuriodevdb}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432" # Expose for direct access if needed, backend will use internal network
+    networks:
+      - yuriodev_network
+    restart: unless-stopped
+
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "3000:3000" # Expose 3000 if you want direct access, though Nginx will be the primary entry point
+      - "3000:3000"
     container_name: yuriodev_frontend
     restart: unless-stopped
     networks:
       - yuriodev_network
     environment:
-      # For Next.js, ensure environment variables are prefixed with NEXT_PUBLIC_ if needed client-side
-      # Example: NEXT_PUBLIC_API_URL=/api
-      # For server-side only, you can use them directly.
-      - NODE_ENV=development # or production when building for prod
+      - NODE_ENV=development
+      # Example for Next.js to know where the backend API is (via Nginx)
+      - NEXT_PUBLIC_API_BASE_URL=http://localhost/api/v1
+      # For server-side calls if Next.js backend talks to FastAPI backend directly (not typical with Nginx proxy)
+      # - API_BASE_URL=http://backend:8000/api/v1
 
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "8000:8000" # Expose 8000 for direct access/debugging, Nginx will proxy
+      - "8000:8000"
     container_name: yuriodev_backend
     restart: unless-stopped
+    depends_on:
+      - postgres
     networks:
       - yuriodev_network
     environment:
-      # Environment variables for FastAPI application
-      # Example: DATABASE_URL=postgresql://user:password@db:5432/mydatabase
-      # For now, using dummy values or relying on defaults in the app
       - APP_ENV=development
-    # volumes: # Example for local development to sync code
-    #   - ./backend:/app # Be cautious with this in Dockerfile stages that build/install
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-yuriodev}:${POSTGRES_PASSWORD:-yuriodevpass}@postgres:5432/${POSTGRES_DB:-yuriodevdb}
+      # OAuth and JWT Secrets (placeholders, override with .env file or actual env vars)
+      - SECRET_KEY=${SECRET_KEY:-supersecretkeythatshouldbechanged}
+      - ALGORITHM=${ALGORITHM:-HS256}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES:-30}
+      - SERVER_HOST=${SERVER_HOST:-http://localhost:8000} # For constructing redirect URIs
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-your_google_client_id}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-your_google_client_secret}
+      - GOOGLE_REDIRECT_URI=${GOOGLE_REDIRECT_URI:-http://localhost:8000/api/v1/auth/google/callback}
+      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID:-your_github_client_id}
+      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET:-your_github_client_secret}
+      - GITHUB_REDIRECT_URI=${GITHUB_REDIRECT_URI:-http://localhost:8000/api/v1/auth/github/callback}
+      # Waitlist CSV path (if still using, though DB is better now)
+      - WAITLIST_CSV_PATH=/app/data/waitlist_emails.csv
+    volumes:
+      # - ./backend:/app # For local development to sync code, be careful with Dockerfile build stages
+      - ./backend/data:/app/data # Example if CSV or other data files are stored here by backend
+      - /var/run/docker.sock:/var/run/docker.sock # Mount Docker socket
 
   nginx:
     build:
       context: ./nginx
       dockerfile: Dockerfile
     ports:
-      - "80:80" # Main entry point for the application
+      - "80:80"
     container_name: yuriodev_nginx
     restart: unless-stopped
     depends_on:
@@ -52,3 +83,6 @@ services:
 networks:
   yuriodev_network:
     driver: bridge
+
+volumes:
+  postgres_data:

@@ -1,0 +1,145 @@
+/* Styles for the main container of the rendered Markdown content */
+.markdownContainer {
+  line-height: 1.7;
+  font-size: 1rem; /* Base font size for lesson text */
+  color: #333; /* Default text color */
+}
+
+/* Headings */
+.markdownContainer h1,
+.markdownContainer h2,
+.markdownContainer h3,
+.markdownContainer h4,
+.markdownContainer h5,
+.markdownContainer h6 {
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
+  color: #1a202c; /* Darker color for headings */
+  font-weight: 600;
+}
+
+.markdownContainer h1 { font-size: 2em; }
+.markdownContainer h2 { font-size: 1.75em; }
+.markdownContainer h3 { font-size: 1.5em; }
+.markdownContainer h4 { font-size: 1.25em; }
+.markdownContainer h5 { font-size: 1.1em; }
+.markdownContainer h6 { font-size: 1em; }
+
+/* Paragraphs */
+.markdownContainer p {
+  margin-bottom: 1.2em;
+}
+
+/* Links */
+.markdownContainer a {
+  color: #0070f3; /* Next.js blue or your theme color */
+  text-decoration: none;
+}
+.markdownContainer a:hover {
+  text-decoration: underline;
+}
+
+/* Lists */
+.markdownContainer ul,
+.markdownContainer ol {
+  margin-bottom: 1.2em;
+  padding-left: 2em; /* Indentation for lists */
+}
+.markdownContainer li {
+  margin-bottom: 0.4em;
+}
+
+/* Blockquotes */
+.markdownContainer blockquote {
+  margin: 1.5em 0;
+  padding: 0.5em 1.5em;
+  border-left: 4px solid #0070f3; /* Accent color for blockquotes */
+  background-color: #f8f9fa; /* Light background for blockquotes */
+  color: #555;
+  font-style: italic;
+}
+.markdownContainer blockquote p {
+  margin-bottom: 0; /* Remove bottom margin for paragraphs inside blockquotes */
+}
+
+/* Code blocks */
+.markdownContainer pre {
+  background-color: #2d2d2d; /* Dark background for code blocks */
+  color: #f8f8f2; /* Light text for code blocks */
+  padding: 1em;
+  border-radius: 5px;
+  overflow-x: auto; /* Allow horizontal scrolling for long code lines */
+  margin-bottom: 1.5em;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 0.9em;
+}
+.markdownContainer code { /* Inline code */
+  background-color: #e9ecef; /* Light gray background for inline code */
+  color: #c7254e; /* Bootstrap's inline code color */
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 0.9em;
+}
+.markdownContainer pre code { /* Code inside pre should not have additional background or padding */
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: inherit; /* Inherit font size from pre */
+}
+
+/* Tables */
+.markdownContainer table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+  border: 1px solid #ddd;
+}
+.markdownContainer th,
+.markdownContainer td {
+  border: 1px solid #ddd;
+  padding: 0.75em;
+  text-align: left;
+}
+.markdownContainer th {
+  background-color: #f2f2f2; /* Light gray background for table headers */
+  font-weight: 600;
+}
+.markdownContainer tr:nth-child(even) {
+  background-color: #f9f9f9; /* Zebra striping for table rows */
+}
+
+/* Horizontal Rules */
+.markdownContainer hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 2em 0;
+}
+
+/* Images */
+.markdownContainer img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px; /* Optional: rounded corners for images */
+  margin: 1em 0;
+}
+
+
+/* Placeholder styles */
+.loading, .noContent, .placeholder, .error {
+  padding: 2rem;
+  text-align: center;
+  color: #777;
+  font-size: 1.1rem;
+  background-color: #f9f9f9;
+  border: 1px dashed #ddd;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+.placeholder h4 {
+  color: #555;
+  margin-top: 0;
+}
+.error {
+  color: #dc3545; /* Red for errors */
+}

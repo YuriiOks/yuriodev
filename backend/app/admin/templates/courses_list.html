@@ -1,0 +1,39 @@
+{% extends "base_admin.html" %}
+
+{% block content %}
+<h2>Manage Courses</h2>
+<p><a href="{{ url_for('create_course_form_admin') }}" class="button">Create New Course</a></p>
+
+{% if courses %}
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Slug</th>
+            <th>Published</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in courses %}
+        <tr>
+            <td>{{ course.id }}</td>
+            <td>{{ course.title }}</td>
+            <td>{{ course.slug }}</td>
+            <td>{{ "Yes" if course.is_published else "No" }}</td>
+            <td>{{ course.created_at.strftime('%Y-%m-%d %H:%M') if course.created_at else '' }}</td>
+            <td class="actions">
+                <a href="{{ url_for('view_course_detail_admin', course_id=course.id) }}" class="button button-secondary">View/Manage</a>
+                <a href="{{ url_for('edit_course_form_admin', course_id=course.id) }}" class="button">Edit</a>
+                {# Add delete form/button here if needed #}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No courses found. <a href="{{ url_for('create_course_form_admin') }}">Create one now?</a></p>
+{% endif %}
+{% endblock %}

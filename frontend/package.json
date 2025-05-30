@@ -11,8 +11,12 @@
   },
   "dependencies": {
     "next": "14.0.0",
+    "prismjs": "^1.30.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-markdown": "^10.1.0",
+    "react-simple-code-editor": "^0.14.1",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "eslint": "8.50.0",

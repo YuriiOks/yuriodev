@@ -61,6 +61,13 @@ USER app
 # Expose port 8000
 EXPOSE 8000
 
-# Command to run Uvicorn
+# Copy the entrypoint script and make it executable
+COPY --chown=app:app ./docker-entrypoint.sh /app/docker-entrypoint.sh
+RUN chmod +x /app/docker-entrypoint.sh
+
+# Set the entrypoint
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
+
+# Command to run Uvicorn (will be passed to the entrypoint script)
 # Ensure the path to main:app is correct based on your directory structure inside backend/
 CMD ["poetry", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

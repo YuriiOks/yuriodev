@@ -1,0 +1,140 @@
+.catalogContainer {
+  padding: 2rem 0; /* Vertical padding, horizontal handled by Layout's mainContent or global .container */
+}
+
+.catalogHeader {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.catalogHeader h1 {
+  font-size: 2.5rem; /* Consistent with other page titles */
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.catalogHeader p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto; /* Center the paragraph */
+}
+
+.courseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 2rem; /* Space between course cards */
+}
+
+.courseCard {
+  /* Global .card styles are applied (background, border, shadow) */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Ensures image corners adhere to card's border-radius */
+}
+
+.courseImageContainer {
+  width: 100%;
+  height: 180px; /* Fixed height for course images */
+  overflow: hidden;
+  background-color: #f0f0f0; /* Placeholder background for images */
+}
+
+.courseImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the container, might crop */
+  transition: transform 0.3s ease;
+}
+
+.courseCard:hover .courseImage {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.courseContent {
+  padding: 1.5rem; /* Padding inside the card, below the image */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allows content to fill space if cards have different heights due to text */
+}
+
+.courseContent h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: #0070f3; /* Primary color for course titles */
+  margin-bottom: 0.75rem;
+}
+
+.courseDescription {
+  font-size: 0.95rem;
+  color: #4a4a4a;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1; /* Pushes button to the bottom */
+  /* Limit text lines with ellipsis if desired */
+  /* display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: calc(1.6em * 3); /* Approx height for 3 lines */
+}
+
+.detailsButton {
+  /* Global .button styles apply */
+  margin-top: auto; /* Pushes button to the bottom of the card content */
+  text-align: center;
+  display: block; /* Make it full width within its container if needed */
+  width: fit-content; /* Or adjust width as preferred */
+  align-self: flex-start; /* Align to the start of the flex container */
+}
+
+.loadingState, .errorState, .emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.2rem;
+  color: #555;
+  min-height: 50vh; /* Ensure it takes up some space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorState {
+  color: #dc3545; /* Red for errors */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .catalogHeader h1 {
+    font-size: 2.2rem;
+  }
+  .catalogHeader p {
+    font-size: 1.1rem;
+  }
+  .courseGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .catalogContainer {
+    padding: 1.5rem 0;
+  }
+  .catalogHeader h1 {
+    font-size: 2rem;
+  }
+  .catalogHeader p {
+    font-size: 1rem;
+  }
+  .courseGrid {
+    grid-template-columns: 1fr; /* Stack cards on very small screens */
+  }
+  .courseImageContainer {
+    height: 160px;
+  }
+  .courseContent h3 {
+    font-size: 1.3rem;
+  }
+}

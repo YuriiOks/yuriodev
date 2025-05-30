@@ -39,7 +39,7 @@ async def add_to_waitlist(entry: WaitlistEntry = Body(...)):
             writer = csv.writer(file)
             if not file_exists or CSV_FILE_PATH.stat().st_size == 0:
                 writer.writerow(["timestamp", "email"])  # Write header if new file
-            
+
             # Check if email already exists (simple check)
             # This is not very efficient for large files.
             if file_exists and CSV_FILE_PATH.stat().st_size > 0 :
@@ -51,10 +51,10 @@ async def add_to_waitlist(entry: WaitlistEntry = Body(...)):
                             # Not an error, but indicates already subscribed.
                             # Could return a 200 OK with a specific message.
                             return {"message": "Email already subscribed"}
-            
+
             timestamp = datetime.utcnow().isoformat()
             writer.writerow([timestamp, email])
-        
+
         return {"message": "Successfully subscribed to the waitlist!"}
     except IOError as e:
         # Log the error e.g., logging.error(f"Could not write to CSV: {e}")

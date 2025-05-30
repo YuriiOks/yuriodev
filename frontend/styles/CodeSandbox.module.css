@@ -1,0 +1,91 @@
+.sandboxContainer {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  margin-top: 1.5rem; /* Space from lesson content above */
+}
+
+.sandboxContainer h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.editorContainer {
+  margin-bottom: 1rem;
+  background-color: #fff; /* Background for the editor itself */
+  border-radius: 4px; /* Match editor style */
+  /* react-simple-code-editor applies its own border, so this is for the container */
+}
+
+/* For react-simple-code-editor, you might need to target its internal textarea if specific overrides are needed beyond inline styles */
+.editorTextarea {
+  /* Example: if you need to ensure it fills the container or has specific focus styles not achievable via inline styles */
+  outline: none; /* Or your custom focus style */
+}
+
+.runButton {
+  /* Uses global .button style */
+  display: inline-block; /* Or block if you want full width */
+  margin-bottom: 1rem;
+  background-color: #28a745; /* Green for run button */
+  color: white;
+}
+
+.runButton:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.resultsContainer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.resultsContainer h5 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.outputSection, .errorSection {
+  margin-bottom: 0.75rem;
+}
+
+.outputSection h6, .errorSection h6 {
+  margin-top: 0;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 600;
+}
+
+.outputPre {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  border-radius: 4px;
+  white-space: pre-wrap;       /* CSS3 */
+  word-wrap: break-word;     /* Internet Explorer 5.5+ */
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 0.9em;
+  max-height: 200px; /* Scrollable output */
+  overflow-y: auto;
+  color: #333; /* Default text color for stdout */
+}
+
+.errorPre {
+  color: #dc3545; /* Red for stderr */
+  background-color: #fdf2f2; /* Light pink background for errors */
+  border-color: #f5c6cb;
+}
+
+.executionTime, .exitCode {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 0.5rem;
+  font-style: italic;
+}

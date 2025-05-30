@@ -1,0 +1,110 @@
+.container {
+  padding: 2rem 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  color: #333;
+}
+
+.profileDetails {
+  /* Using global .card style for base */
+  max-width: 700px;
+  margin: 0 auto; /* Center the card */
+  padding: 2rem;
+}
+
+.profileDetails h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #0070f3; /* Primary color for section title */
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.detailItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 1rem;
+}
+
+.detailItem:last-child {
+  border-bottom: none;
+}
+
+.detailItem strong {
+  color: #555;
+  margin-right: 1rem;
+}
+
+.detailItem span {
+  color: #333;
+  text-align: right;
+}
+
+.provider {
+  text-transform: capitalize;
+  font-weight: 500;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+.provider[data-provider="google"] { /* Example if you want specific provider styling */
+  background-color: #e9f1ff;
+  color: #4285f4;
+}
+.provider[data-provider="github"] {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+
+.loading, .error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.error {
+  color: #dc3545; /* Red for errors */
+}
+
+.profileActions {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .profileDetails {
+    padding: 1.5rem;
+  }
+  .header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0;
+  }
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  .detailItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .detailItem span {
+    text-align: left;
+    margin-top: 0.25rem;
+  }
+}
